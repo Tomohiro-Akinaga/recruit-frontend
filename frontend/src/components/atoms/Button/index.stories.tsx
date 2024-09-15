@@ -11,7 +11,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-/** Primaryカラーボタン */
+/** Primaryボタン */
 export const PrimaryButton: Story = {
   args: {
     children: 'Edit',
@@ -21,7 +21,18 @@ export const PrimaryButton: Story = {
   },
 }
 
-/** Secondaryカラーボタン */
+/** Primary非活性ボタン */
+export const PrimaryButtonDisabled: Story = {
+  args: {
+    children: 'Edit',
+    size: 'large',
+    color: 'primary',
+    icon: 'edit',
+    disabled: true,
+  },
+}
+
+/** Secondaryボタン */
 export const SecondaryButton: Story = {
   args: {
     children: 'Edit',
@@ -31,12 +42,34 @@ export const SecondaryButton: Story = {
   },
 }
 
-/** Tertiaryカラーボタン */
+/** Secondary非活性ボタン */
+export const SecondaryButtonDisabled: Story = {
+  args: {
+    children: 'Edit',
+    size: 'large',
+    color: 'secondary',
+    icon: 'edit',
+    disabled: true,
+  },
+}
+
+/** Tertiaryボタン */
 export const TertiaryButton: Story = {
   args: {
     children: 'Edit',
     size: 'large',
     color: 'tertiary',
     icon: 'edit',
+  },
+}
+
+/** Tertiary非活性ボタン */
+export const TertiaryButtonDisabled: Story = {
+  args: {
+    children: 'Edit',
+    size: 'large',
+    color: 'tertiary',
+    icon: 'edit',
+    disabled: true,
   },
 }

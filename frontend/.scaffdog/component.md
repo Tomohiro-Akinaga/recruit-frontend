@@ -1,12 +1,12 @@
 ---
-name: "components"
-root: "./src/components"
-output: "**/*"
-ignore: ["./src/components"]
+name: 'components'
+root: './src/components'
+output: '**/*'
+ignore: ['./src/components']
 questions:
-  name: "Please enter a component name."
+  name: 'Please enter a component name.'
   test:
-    confirm: "Do you need a test?"
+    confirm: 'Do you need a test?'
     initial: true
 ---
 
@@ -14,6 +14,7 @@ questions:
 
 ```tsx
 import React, { PropsWithChildren } from "react";
+import styles from './index.module.css'
 
 interface Props {}
 

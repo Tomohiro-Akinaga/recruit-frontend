@@ -1,0 +1,44 @@
+.button {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  background-color: #fff;
+}
+
+.button:hover {
+  background-color: #e6e6e6;
+}
+
+.button:active {
+  background-color: #cccccc;
+}
+
+.button:disabled {
+  background-color: #fff;
+  cursor: not-allowed;
+}
+
+.button.has-icon::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: cover;
+  background-color: #b3b3b3;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+.button.has-icon:disabled::before {
+  opacity: 30%;
+}
+
+.button.is-delete::before {
+  mask-image: url('public/assets/img/icon/delete.svg');
+}

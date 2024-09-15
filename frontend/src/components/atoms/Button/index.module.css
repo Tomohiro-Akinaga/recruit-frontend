@@ -20,6 +20,17 @@
 .button.is-primary {
   background-color: #4cb3f8;
   color: #fff;
+  &:hover {
+    background-color: #3c8ec4;
+  }
+  &:active {
+    background-color: #347cab;
+  }
+  &:disabled {
+    background-color: #4cb3f8;
+    opacity: 30%;
+    cursor: not-allowed;
+  }
 }
 
 .button.is-secondary {
@@ -29,11 +40,33 @@
   &.has-icon::before {
     background-color: #4cb3f8;
   }
+  &:hover {
+    background-color: #cccccc;
+  }
+  &:active {
+    background-color: #b3b3b3;
+  }
+  &:disabled {
+    background-color: #fff;
+    opacity: 30%;
+    cursor: not-allowed;
+  }
 }
 
 .button.is-tertiary {
   background-color: #b3b3b3;
   color: #fff;
+  &:hover {
+    background-color: #999999;
+  }
+  &:active {
+    background-color: #808080;
+  }
+  &:disabled {
+    background-color: #b3b3b3;
+    opacity: 30%;
+    cursor: not-allowed;
+  }
 }
 
 .button.has-icon::before {
