@@ -81,21 +81,21 @@
 }
 
 .button.is-create::before {
-  mask-image: url('public/assets/img/icon/create.svg');
+  mask-image: url('/assets/img/icon/create.svg');
 }
 
 .button.is-edit::before {
-  mask-image: url('public/assets/img/icon/edit.svg');
+  mask-image: url('/assets/img/icon/edit.svg');
 }
 
 .button.is-cancel::before {
-  mask-image: url('public/assets/img/icon/cancel.svg');
+  mask-image: url('/assets/img/icon/cancel.svg');
 }
 
 .button.is-save::before {
-  mask-image: url('public/assets/img/icon/save.svg');
+  mask-image: url('/assets/img/icon/save.svg');
 }
 
 .button.is-done::before {
-  mask-image: url('public/assets/img/icon/done.svg');
+  mask-image: url('/assets/img/icon/done.svg');
 }

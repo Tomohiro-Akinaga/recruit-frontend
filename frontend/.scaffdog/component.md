@@ -1,7 +1,7 @@
 ---
 name: 'components'
 root: './src/components'
-output: '**/*'
+output: '*'
 ignore: ['./src/components']
 questions:
   name: 'Please enter a component name.'
