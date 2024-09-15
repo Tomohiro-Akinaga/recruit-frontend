@@ -1,0 +1,68 @@
+.button {
+  width: 90px;
+  height: 40px;
+  font-size: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 10px;
+  font-weight: 700;
+}
+
+.button.is-small {
+  width: 40px;
+  height: 40px;
+}
+
+.button.is-primary {
+  background-color: #4cb3f8;
+  color: #fff;
+}
+
+.button.is-secondary {
+  background-color: #fff;
+  color: #4cb3f8;
+  border: 2px solid #4cb3f8;
+  &.has-icon::before {
+    background-color: #4cb3f8;
+  }
+}
+
+.button.is-tertiary {
+  background-color: #b3b3b3;
+  color: #fff;
+}
+
+.button.has-icon::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 24px;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.button.is-create::before {
+  mask-image: url('public/assets/img/icon/create.svg');
+}
+
+.button.is-edit::before {
+  mask-image: url('public/assets/img/icon/edit.svg');
+}
+
+.button.is-cancel::before {
+  mask-image: url('public/assets/img/icon/cancel.svg');
+}
+
+.button.is-save::before {
+  mask-image: url('public/assets/img/icon/save.svg');
+}
+
+.button.is-done::before {
+  mask-image: url('public/assets/img/icon/done.svg');
+}
