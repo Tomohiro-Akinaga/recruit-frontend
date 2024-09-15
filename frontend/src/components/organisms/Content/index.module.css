@@ -9,4 +9,37 @@
   background-color: #f5f8fa;
   border-radius: 16px;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.titleContainer {
+  display: grid;
+  grid-template-columns: auto 90px;
+  gap: 20px;
+}
+
+.title {
+  font-size: 24px;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 40px;
+  font-weight: 700;
+  padding: 0 30px;
+}
+
+.textContainer {
+  display: grid;
+  grid-template-columns: auto 90px;
+  gap: 20px;
+  height: 530px;
+}
+
+.text {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+  overflow: scroll;
 }
