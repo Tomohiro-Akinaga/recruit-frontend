@@ -26,6 +26,10 @@ const SideBar = ({ children }: PropsWithChildren<Props>) => {
     fetchTitles()
   }, [])
 
+  const handleCreate = async () => {
+    await fetch('/api/POST', { method: 'POST' })
+  }
+
   const handleEdit = () => setIsEditing(!isEditing)
 
   const handleDelete = () => {}
@@ -33,7 +37,7 @@ const SideBar = ({ children }: PropsWithChildren<Props>) => {
   const CreateButton = () => {
     if (!isEditing) return
     return (
-      <Button size='large' color='secondary' icon='create'>
+      <Button size='large' color='secondary' icon='create' onClick={handleCreate}>
         New Page
       </Button>
     )

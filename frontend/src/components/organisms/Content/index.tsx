@@ -1,22 +1,36 @@
 'use client'
 
-import React, { PropsWithChildren, useState } from 'react'
+import React, { PropsWithChildren, useEffect, useState } from 'react'
 import styles from './index.module.css'
 import Button from '@/components/atoms/Button'
 
 interface Props {}
 
+type Content = {
+  id: string
+  title: string
+  body: string
+}
+
 const Content = ({ children }: PropsWithChildren<Props>) => {
   const [isEditable, setIsEditable] = useState<boolean>(false)
-  const dummyText =
-    '私は以後よくこの用意人というのの上を籠っでです。つるつる今を授業学は至極どういう一言ないらしいだけへなりておきないとは就職始めたらしくて、とてもには認めたでたた。人と知れで事はいったん以前がもうましないな。おもに岡田さんがお話渾名始終お断りで思った手本とんだ理窟彼らか指導がといったご切望ないたたんから、この翌日も私か個性通りが起りて、大森さんののにお茶のあなたにいよいよご評としからそれ個性に肝妨害を描いようにもしお指図にしたなけれので、いくらもう話をするうからいあるのに釣らなです。ただけれどもご家が決するのはこれから自由と困るないけれども、その国家をも並べありてといった人間とありていんう。そのため考のためその状態は私中が申し上げたかと張さんへ始めますだ、中学校の事実なけれというご講演だますですで、赤の中に因襲を前かもの教場より今もっば合うけれども、そうの場合に気に入るからこの時ともっと申しでうとしべきものありて、忌まわしいでまいてこれからご他返っまし旨でしょうます。しかし連中か自由か承諾に迂たて、場合中他に始めがいたところにお附着の一遍に行くでう。今にはけっしてかかりてしよでたたないて、いよいよどうも考えて返事は全く偉いませのない。ところがお仕事よりありではいるうんたらて、お笑いでは、やはり私か思いているられたんありれうましと見せるて、貧乏人は始めで来なくっです。ついにいくらもついモーニングというならべきので、おれからも今ごろまで私の皆周旋は強く見るくれるたない。私さえかつて附随の方にご落第も眺めてならありませでしなて、一一の霧がだんだん解せませについて横着あるて、またこういう害の理窟と考えれるて、あなたかに私の魚籃を詐欺に勧めばみるでしのですだと滅亡抜かして相違使ういうた。人間にそれで大森さんをそれでこうなりないのましないあり。三宅さんはまだ個人をいっば見えたのましですで。（または事にし限りたくったらたてますはするんなて、）それほどしですお笑いから、朝日の主義まで受けるから願っという、一般の運動は場合の以上だけ知れ思い事を犯さたて記憶ごと考えているませというお国家でし事た。それはおそらく個人をするだように移ろて得るなかっのんてまたいっそ目黒年聞いですた。そこで少々一人は事業より使うば、以後にもし思いましょないと要らて、ないでんけれどももっともご立証をいますたく。徳義の事実を、この人に時分をおいかも、時分中で全く前二一一年より感じかもの本位に、みんなか続いた誤解の通り越した前は何だか頼められ事なけれども、もしそれほど洋服を深いから、そののがしのに失礼まし怪しいさますです。なおけっして今三二一字に申し上げまでもしでに対して駄目だ会得に行かから、自己へそのうちそんなためにあるてならますものな。せっかくに秋刀魚にペ来なけれ四二日場合を眺めるて、私かするですているでしょというものにまだ突き抜けな事ですて、単にさものを未熟ないて、はなはだ眼を向いで考えて得るだです責任でしと行っがよそかなしのを立つようにするともできますたいて、あるいは問題はないものに云わけれども、これに世の中がある行くて一字を一日は十日もいかに稼ぎて切っかもた事ない。今んますか考え世界から行って、その義務は自由おとなしく安泰淋しと出かけです事うはしよたた、なかろ手段のために使えるまし獄ですあっとありがいるたのでた。すると何は重大でと読んで点ませもたまらない、大変なかっがなるなら事なと立てるてそちらの一般の働からどんな先輩を発見知らからしまいですた'
+  const [content, setContent] = useState<Content | null>(null)
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      const response = await fetch('http://localhost:8080/content/1')
+      const data = await response.json()
+      setContent(data)
+    }
+    fetchContent()
+  }, [])
 
   const handleEdit = () => setIsEditable(!isEditable)
 
   const TitleContainer = () => {
     return (
       <div className={styles.titleContainer}>
-        <h1 className={styles.title}>タイトル</h1>
+        <h1 className={styles.title}>{content?.title}</h1>
         <Button size='large' icon='edit' color='primary'>
           Edit
         </Button>
@@ -27,7 +41,7 @@ const Content = ({ children }: PropsWithChildren<Props>) => {
   const TextContainer = () => {
     return (
       <div className={styles.textContainer}>
-        <p className={styles.text}>{dummyText}</p>
+        <p className={styles.text}>{content?.body}</p>
         <Button size='large' icon='edit' color='primary'>
           Edit
         </Button>
