@@ -1,17 +1,34 @@
 'use client'
 
-import React, { PropsWithChildren, useState, useMemo } from 'react'
+import React, { PropsWithChildren, useState, useMemo, useEffect } from 'react'
 import styles from './index.module.css'
 import Button from '@/components/atoms/Button'
+import IconButton from '@/components/atoms/IconButton'
 
 interface Props {}
 
+type Contents = {
+  id: string
+  title: string
+  body: string
+}
+
 const SideBar = ({ children }: PropsWithChildren<Props>) => {
   const [isEditing, setIsEditing] = useState<boolean>(false)
+  const [contents, setContents] = useState<Contents[]>([])
 
-  const titles = ['こころ', '吾輩は猫である', '羅生門', '蜘蛛の糸', '走れメロス']
+  useEffect(() => {
+    const fetchTitles = async () => {
+      const response = await fetch('http://localhost:8080/content')
+      const data = await response.json()
+      setContents(data)
+    }
+    fetchTitles()
+  }, [])
 
   const handleEdit = () => setIsEditing(!isEditing)
+
+  const handleDelete = () => {}
 
   const CreateButton = () => {
     if (!isEditing) return
@@ -42,9 +59,10 @@ const SideBar = ({ children }: PropsWithChildren<Props>) => {
     <div className={styles.wrapper}>
       <h3 className={styles.serviceLogo}>ServiceName</h3>
       <ul className={styles.titleList}>
-        {titles.map((v, i) => (
-          <li key={i} className={styles.title}>
-            {v}
+        {contents.map((v) => (
+          <li key={v.id} className={styles.title}>
+            {v.title}
+            {isEditing && <IconButton icon='delete' onClick={handleDelete} />}
           </li>
         ))}
       </ul>

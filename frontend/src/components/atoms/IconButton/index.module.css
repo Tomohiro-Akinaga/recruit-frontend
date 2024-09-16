@@ -40,5 +40,6 @@
 }
 
 .button.is-delete::before {
-  mask-image: url('/assets/img/icon/delete.svg');
+  mask-image: url('../../../../public/assets/img/icon/delete.svg');
+  background-color: #b3b3b3;
 }
