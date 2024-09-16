@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import localFont from 'next/font/local'
 import { Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
+import { ContentProvider } from '@/context/ContentProvider'
 
 const noto = Noto_Sans_JP({
   weight: 'variable',
@@ -21,7 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='jp'>
-      <body className={`${noto.variable}`}>{children}</body>
+      <ContentProvider>
+        <body className={`${noto.variable}`}>{children}</body>
+      </ContentProvider>
     </html>
   )
 }

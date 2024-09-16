@@ -4,11 +4,21 @@ import SideBar from '@/components/organisms/SideBar'
 import Content from '@/components/organisms/Content'
 import Footer from '@/components/organisms/Footer'
 
-const HomeTemplate = () => {
+type ContentsType = {
+  id: number
+  title: string
+  body: string
+}[]
+
+interface Props {
+  contents: ContentsType
+}
+
+const HomeTemplate = ({ contents }: Props) => {
   return (
     <div className={styles.wrapper}>
-      <SideBar />
-      <Content />
+      <SideBar contents={contents} />
+      {/* <Content contents={contents} /> */}
       <Footer />
     </div>
   )

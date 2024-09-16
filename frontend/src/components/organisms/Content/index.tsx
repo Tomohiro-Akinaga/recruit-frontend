@@ -41,7 +41,7 @@ const Content = ({ children }: PropsWithChildren<Props>) => {
   const TextContainer = () => {
     return (
       <div className={styles.textContainer}>
-        <p className={styles.text}>{content?.body}</p>
+        <p className={styles.text}>{content?.body || ''}</p>
         <Button size='large' icon='edit' color='primary'>
           Edit
         </Button>

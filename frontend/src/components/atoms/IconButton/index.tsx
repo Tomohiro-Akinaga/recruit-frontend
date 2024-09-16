@@ -7,7 +7,7 @@ interface Props extends ComponentPropsWithoutRef<'button'> {
 
 const IconButton = ({ children, icon, onClick, disabled = false }: PropsWithChildren<Props>) => {
   const classNames = [styles.button, styles['has-icon'], styles[`is-${icon}`]].join(' ')
-  return <button className={classNames} disabled={disabled}></button>
+  return <button className={classNames} disabled={disabled} onClick={onClick}></button>
 }
 
 export default IconButton
