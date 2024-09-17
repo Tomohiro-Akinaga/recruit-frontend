@@ -5,7 +5,6 @@ import styles from './index.module.css'
 import Button from '@/components/atoms/Button'
 import IconButton from '@/components/atoms/IconButton'
 import { useContent } from '@/hooks/useContent'
-import Link from 'next/link'
 import ServiceLogo from '@/components/atoms/ServiceLogo'
 
 type ContentType = {
@@ -68,7 +67,7 @@ const SideBar = ({ children, setContentId }: PropsWithChildren<Props>) => {
     <div className={styles.wrapper}>
       <ServiceLogo>ServiceName</ServiceLogo>
       <ul className={styles.titleList}>
-        {state.contents.map((v: any) => (
+        {state.contents.map((v: ContentType) => (
           <li key={v.id} className={styles.title} onClick={() => setContentId(v.id)}>
             {v.title}
             {isEditing && <IconButton icon='delete' onClick={() => handleDelete(v.id)} />}
