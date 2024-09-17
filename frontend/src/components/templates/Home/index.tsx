@@ -12,7 +12,7 @@ type ContentsType = {
 
 interface Props {
   contents: ContentsType
-  contentId: number
+  contentId: number | undefined
   setContentId: (id: number) => void
 }
 

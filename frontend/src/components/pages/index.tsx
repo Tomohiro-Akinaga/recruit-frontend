@@ -6,7 +6,7 @@ import { useContent } from '@/hooks/useContent'
 
 const HomePage = () => {
   const { state, dispatch } = useContent()
-  const [contentId, setContentId] = useState<number>(0)
+  const [contentId, setContentId] = useState<number | undefined>(undefined)
 
   useEffect(() => {
     const fetchContents = async () => {

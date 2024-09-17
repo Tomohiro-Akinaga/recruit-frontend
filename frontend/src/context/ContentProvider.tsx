@@ -17,6 +17,20 @@ const reducer = (state: any, action: any) => {
       return { ...state, contents: state.contents.filter((v: any) => v.id !== action.payload) }
     case 'CREATE':
       return { ...state, contents: [...state.contents, action.payload] }
+    case 'UPDATE_TITLE':
+      return {
+        ...state,
+        contents: state.contents.map((v: any) =>
+          v.id === action.payload.id ? { ...v, title: action.payload.title } : v
+        ),
+      }
+    case 'UPDATE_BODY':
+      return {
+        ...state,
+        contents: state.contents.map((v: any) =>
+          v.id === action.payload.id ? { ...v, body: action.payload.body } : v
+        ),
+      }
     default:
       return state
   }

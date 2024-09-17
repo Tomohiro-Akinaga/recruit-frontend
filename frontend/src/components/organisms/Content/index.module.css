@@ -14,33 +14,83 @@
   gap: 20px;
 }
 
-.titleContainer {
+.titleArea {
   display: grid;
-  grid-template-columns: auto 90px;
+  grid-template-columns: 1fr 90px;
   gap: 20px;
 }
 
 .title {
+  width: 100%;
   font-size: 24px;
   color: #333333;
   letter-spacing: 0;
   line-height: 40px;
   font-weight: 700;
   padding: 0 30px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background-color: #fff;
 }
 
-.textContainer {
+.title:read-only {
+  width: 100%;
+  font-size: 24px;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 40px;
+  font-weight: 700;
+  padding: 0 30px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background-color: transparent;
+}
+
+.textArea {
   display: grid;
-  grid-template-columns: auto 90px;
+  grid-template-columns: 1fr 90px;
   gap: 20px;
-  height: 100%;
 }
 
 .text {
+  width: 100%;
   background-color: #fff;
   padding: 30px;
   border-radius: 8px;
   overflow: hidden;
   overflow: scroll;
   height: 530px;
+  border: none;
+
+  font-size: 16px;
+  color: #333333;
+  letter-spacing: 0;
+  font-weight: 400;
+  outline: none;
+  resize: none;
+}
+
+.text:read-only {
+  width: 100%;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+  overflow: scroll;
+  height: 530px;
+  border: none;
+
+  font-size: 16px;
+  color: #333333;
+  letter-spacing: 0;
+  font-weight: 400;
+  outline: none;
+  resize: none;
+}
+
+.editButtonArea {
+  display: flex;
+  gap: 10px;
 }

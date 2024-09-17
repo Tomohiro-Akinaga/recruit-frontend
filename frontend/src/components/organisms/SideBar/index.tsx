@@ -25,7 +25,6 @@ const SideBar = ({ children, setContentId }: PropsWithChildren<Props>) => {
   const handleCreate = async () => {
     const res = await fetch('/api/POST', { method: 'POST' })
     const data = await res.json()
-
     dispatch({ type: 'CREATE', payload: data.data })
   }
 
