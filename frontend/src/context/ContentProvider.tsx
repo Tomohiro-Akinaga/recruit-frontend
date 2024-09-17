@@ -1,29 +1,27 @@
 'use client'
 
-import React, { createContext, ReactNode, useReducer } from 'react'
+import { createContext, useReducer } from 'react'
 
 type CountContextType = {
   state: any
   dispatch: any
 }
 
-const initialState: any = { count: 0 }
+export const ContentContext = createContext<CountContextType | null>(null)
 
-function reducer(state: any, action: any) {
+const reducer = (state: any, action: any) => {
   switch (action.type) {
-    case 'increment':
-      return { count: state.count + 1 }
-    case 'decrement':
-      return { count: state.count - 1 }
+    case 'SET':
+      return { ...state, contents: action.payload }
+    case 'DELETE':
+      return { ...state, contents: state.contents.filter((v: any) => v.id !== action.payload) }
     default:
       return state
   }
 }
 
-export const CountContext = createContext<CountContextType | null>(null)
+export const ContentProvider = ({ children }: any) => {
+  const [state, dispatch] = useReducer(reducer, { contents: [] })
 
-export const ContentProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useReducer(reducer, initialState)
-
-  return <CountContext.Provider value={{ state, dispatch }}>{children}</CountContext.Provider>
+  return <ContentContext.Provider value={{ state, dispatch }}>{children}</ContentContext.Provider>
 }

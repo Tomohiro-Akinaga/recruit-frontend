@@ -4,9 +4,7 @@ import React, { PropsWithChildren, useState, useMemo, useEffect, useReducer, use
 import styles from './index.module.css'
 import Button from '@/components/atoms/Button'
 import IconButton from '@/components/atoms/IconButton'
-import Link from 'next/link'
-import { reducer } from '@/components/pages'
-import { CountContext } from '@/context/ContentProvider'
+import { useContent } from '@/hooks/useContent'
 
 type ContentType = {
   id: number
@@ -18,16 +16,10 @@ interface Props {
   contents: ContentType[]
 }
 
-function useCount() {
-  const context = useContext(CountContext)
-  if (!context) {
-    throw new Error('useCount must be used within a CountProvider')
-  }
-  return context
-}
-
-const SideBar = ({ children, contents }: PropsWithChildren<Props>) => {
+const SideBar = ({ children }: PropsWithChildren<Props>) => {
   const [isEditing, setIsEditing] = useState<boolean>(false)
+
+  const { state, dispatch } = useContent()
 
   const handleCreate = async () => await fetch('/api/POST', { method: 'POST' })
 
@@ -35,8 +27,7 @@ const SideBar = ({ children, contents }: PropsWithChildren<Props>) => {
 
   const handleDelete = async (id: number) => {
     await fetch('/api/DELETE', { method: 'DELETE', body: JSON.stringify({ id }) })
-    const response = await fetch('/api/GET')
-    const data = await response.json()
+    dispatch({ type: 'DELETE', payload: id })
   }
 
   const CreateButton = () => {
@@ -65,17 +56,14 @@ const SideBar = ({ children, contents }: PropsWithChildren<Props>) => {
     return [styles.buttonArea].join(' ')
   }, [isEditing])
 
-  const { state, dispatch } = useCount()
   return (
     <div className={styles.wrapper}>
       <h3 className={styles.serviceLogo}>ServiceName</h3>
-      <button onClick={() => dispatch({ type: 'increment' })}>Increment</button>;
+
       <ul className={styles.titleList}>
-        {contents.map((v: any) => (
+        {state.contents.map((v: any) => (
           <li key={v.id} className={styles.title}>
-            <Link href={`/${v.id}`} style={{ width: '100%' }}>
-              {v.title}
-            </Link>
+            {v.title}
             {isEditing && <IconButton icon='delete' onClick={() => handleDelete(v.id)} />}
           </li>
         ))}
