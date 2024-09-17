@@ -1,8 +1,6 @@
-import { describe, expect, test } from "vitest";
-import ServiceLogo from "./index"
+import { describe, expect, test } from 'vitest'
+import ServiceLogo from './index'
 
-describe("ServiceLogo", () => {
-
+describe('ServiceLogo', () => {
   test('test comment', () => {})
-
-});
+})

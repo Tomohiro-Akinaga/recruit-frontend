@@ -7,7 +7,7 @@ interface Props extends ComponentPropsWithoutRef<'button'> {
   icon: 'create' | 'edit' | 'cancel' | 'save' | 'done'
 }
 
-const Button = ({ children, size, color, icon, disabled, onClick }: PropsWithChildren<Props>) => {
+const Button = ({ children, size, color, icon, disabled, onClick, ...args }: PropsWithChildren<Props>) => {
   const classNames = [
     styles.button,
     styles['has-icon'],
@@ -17,7 +17,7 @@ const Button = ({ children, size, color, icon, disabled, onClick }: PropsWithChi
   ].join(' ')
 
   return (
-    <button className={classNames} onClick={onClick} disabled={disabled}>
+    <button className={classNames} onClick={onClick} disabled={disabled} {...args}>
       {children}
     </button>
   )
