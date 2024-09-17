@@ -21,7 +21,12 @@ const SideBar = ({ children }: PropsWithChildren<Props>) => {
 
   const { state, dispatch } = useContent()
 
-  const handleCreate = async () => await fetch('/api/POST', { method: 'POST' })
+  const handleCreate = async () => {
+    const res = await fetch('/api/POST', { method: 'POST' })
+    const data = await res.json()
+
+    dispatch({ type: 'CREATE', payload: data.data })
+  }
 
   const handleEdit = () => setIsEditing(!isEditing)
 

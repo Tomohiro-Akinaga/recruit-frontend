@@ -15,6 +15,8 @@ const reducer = (state: any, action: any) => {
       return { ...state, contents: action.payload }
     case 'DELETE':
       return { ...state, contents: state.contents.filter((v: any) => v.id !== action.payload) }
+    case 'CREATE':
+      return { ...state, contents: [...state.contents, action.payload] }
     default:
       return state
   }
