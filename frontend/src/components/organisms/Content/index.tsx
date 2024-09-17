@@ -43,12 +43,12 @@ const Content = ({ children, contentId }: PropsWithChildren<Props>) => {
 
   const handleCancelTitle = () => {
     setIsEditableTitle(false)
-    setTitle(content.title)
+    setTitle(title)
   }
 
   const handleCancelText = () => {
     setIsEditableText(false)
-    setText(content.body)
+    setText(text)
   }
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)
@@ -68,7 +68,7 @@ const Content = ({ children, contentId }: PropsWithChildren<Props>) => {
   const handleSaveText = async () => {
     const response = await fetch('/api/PUT', {
       method: 'PUT',
-      body: JSON.stringify({ id: contentId, title: content?.title, body: text }),
+      body: JSON.stringify({ id: contentId, title: title, body: text }),
     })
     const data = await response.json()
     dispatch({ type: 'UPDATE_BODY', payload: data.data })
