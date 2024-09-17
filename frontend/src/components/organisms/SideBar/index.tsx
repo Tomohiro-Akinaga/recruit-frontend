@@ -16,7 +16,7 @@ type ContentType = {
 
 interface Props {
   contents: ContentType[]
-  setContentId: (id: number) => void
+  setContentId: (id: number | undefined) => void
 }
 
 const SideBar = ({ children, setContentId }: PropsWithChildren<Props>) => {
@@ -35,6 +35,7 @@ const SideBar = ({ children, setContentId }: PropsWithChildren<Props>) => {
   const handleDelete = async (id: number) => {
     await fetch('/api/DELETE', { method: 'DELETE', body: JSON.stringify({ id }) })
     dispatch({ type: 'DELETE', payload: id })
+    setContentId(undefined)
   }
 
   const CreateButton = () => {

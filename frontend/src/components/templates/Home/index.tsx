@@ -13,7 +13,7 @@ type ContentsType = {
 interface Props {
   contents: ContentsType
   contentId: number | undefined
-  setContentId: (id: number) => void
+  setContentId: (id: number | undefined) => void
 }
 
 const HomeTemplate = ({ contents, contentId, setContentId }: Props) => {

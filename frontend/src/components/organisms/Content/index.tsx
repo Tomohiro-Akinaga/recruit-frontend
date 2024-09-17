@@ -28,12 +28,12 @@ const Content = ({ children, contentId }: PropsWithChildren<Props>) => {
 
   useEffect(() => {
     const fetchContent = async () => {
-      if (!contentId) return
+      if (!contentId) setContent({ id: 0, title: '', body: '' })
       const response = await fetch(`/api/GET/${contentId}`)
       const data = await response.json()
       setContent(data.data)
-      setTitle(data.data.title)
-      setText(data.data.body)
+      setTitle(data.data.title || '')
+      setText(data.data.body || '')
     }
     fetchContent()
   }, [contentId])
