@@ -58,7 +58,7 @@ const Content = ({ children, contentId }: PropsWithChildren<Props>) => {
   const handleSaveTitle = async () => {
     const response = await fetch('/api/PUT', {
       method: 'PUT',
-      body: JSON.stringify({ id: contentId, title: title, body: content?.body }),
+      body: JSON.stringify({ id: contentId, title: title, body: content.body }),
     })
     const data = await response.json()
     dispatch({ type: 'UPDATE_TITLE', payload: data.data })

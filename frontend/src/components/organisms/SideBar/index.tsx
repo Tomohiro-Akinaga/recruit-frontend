@@ -5,6 +5,8 @@ import styles from './index.module.css'
 import Button from '@/components/atoms/Button'
 import IconButton from '@/components/atoms/IconButton'
 import { useContent } from '@/hooks/useContent'
+import Link from 'next/link'
+import ServiceLogo from '@/components/atoms/ServiceLogo'
 
 type ContentType = {
   id: number
@@ -63,8 +65,7 @@ const SideBar = ({ children, setContentId }: PropsWithChildren<Props>) => {
 
   return (
     <div className={styles.wrapper}>
-      <h3 className={styles.serviceLogo}>ServiceName</h3>
-
+      <ServiceLogo>ServiceName</ServiceLogo>
       <ul className={styles.titleList}>
         {state.contents.map((v: any) => (
           <li key={v.id} className={styles.title} onClick={() => setContentId(v.id)}>
