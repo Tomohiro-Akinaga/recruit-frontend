@@ -6,17 +6,19 @@ import { useContent } from '@/hooks/useContent'
 
 const HomePage = () => {
   const { state, dispatch } = useContent()
+  const [contentId, setContentId] = useState<number>(0)
 
   useEffect(() => {
     const fetchContents = async () => {
       const response = await fetch('/api/GET')
       const contents = await response.json()
       dispatch({ type: 'SET', payload: contents.data })
+      setContentId(contents.data[0]?.id)
     }
     fetchContents()
   }, [dispatch])
 
-  return <HomeTemplate contents={state.contents} />
+  return <HomeTemplate contents={state.contents} contentId={contentId} setContentId={setContentId} />
 }
 
 export default HomePage

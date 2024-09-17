@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './index.module.css'
 import SideBar from '@/components/organisms/SideBar'
 import Content from '@/components/organisms/Content'
@@ -12,13 +12,15 @@ type ContentsType = {
 
 interface Props {
   contents: ContentsType
+  contentId: number
+  setContentId: (id: number) => void
 }
 
-const HomeTemplate = ({ contents }: Props) => {
+const HomeTemplate = ({ contents, contentId, setContentId }: Props) => {
   return (
     <div className={styles.wrapper}>
-      <SideBar contents={contents} />
-      {/* <Content contents={contents} /> */}
+      <SideBar contents={contents} setContentId={setContentId} />
+      <Content contents={contents} contentId={contentId} />
       <Footer />
     </div>
   )

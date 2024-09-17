@@ -14,9 +14,10 @@ type ContentType = {
 
 interface Props {
   contents: ContentType[]
+  setContentId: (id: number) => void
 }
 
-const SideBar = ({ children }: PropsWithChildren<Props>) => {
+const SideBar = ({ children, setContentId }: PropsWithChildren<Props>) => {
   const [isEditing, setIsEditing] = useState<boolean>(false)
 
   const { state, dispatch } = useContent()
@@ -67,7 +68,7 @@ const SideBar = ({ children }: PropsWithChildren<Props>) => {
 
       <ul className={styles.titleList}>
         {state.contents.map((v: any) => (
-          <li key={v.id} className={styles.title}>
+          <li key={v.id} className={styles.title} onClick={() => setContentId(v.id)}>
             {v.title}
             {isEditing && <IconButton icon='delete' onClick={() => handleDelete(v.id)} />}
           </li>

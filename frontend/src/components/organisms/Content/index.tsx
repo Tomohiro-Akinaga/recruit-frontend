@@ -3,27 +3,25 @@
 import React, { PropsWithChildren, useEffect, useState } from 'react'
 import styles from './index.module.css'
 import Button from '@/components/atoms/Button'
-
-interface Props {}
+import { useContent } from '@/hooks/useContent'
 
 type Content = {
-  id: string
+  id: number
   title: string
   body: string
 }
 
-const Content = ({ children }: PropsWithChildren<Props>) => {
-  const [isEditable, setIsEditable] = useState<boolean>(false)
-  const [content, setContent] = useState<Content | null>(null)
+interface Props {
+  contents: Content[]
+  contentId: number
+}
 
-  useEffect(() => {
-    const fetchContent = async () => {
-      const response = await fetch('http://localhost:8080/content/1')
-      const data = await response.json()
-      setContent(data)
-    }
-    fetchContent()
-  }, [])
+const Content = ({ children, contents, contentId }: PropsWithChildren<Props>) => {
+  const [isEditable, setIsEditable] = useState<boolean>(false)
+
+  const { state, dispatch } = useContent()
+
+  const content = state.contents.find((v: any) => v.id === contentId)
 
   const handleEdit = () => setIsEditable(!isEditable)
 
