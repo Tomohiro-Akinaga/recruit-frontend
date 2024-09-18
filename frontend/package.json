@@ -8,6 +8,7 @@
     "start": "next start",
     "test": "vitest",
     "lint": "next lint",
+    "cy:open": "cypress open",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
